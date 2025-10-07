@@ -60,3 +60,9 @@ The goal is to build a modern, reliable, and well-documented data warehouse. The
 - Staging, intermediate, and mart layers
 - Incremental models and snapshots
 - Testing and documentation
+## Improved dbt Repository
+
+### Additional Content
+- Staging, intermediate, and mart layers
+- Incremental models and snapshots
+- Testing and documentation
