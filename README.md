@@ -54,3 +54,9 @@ The goal is to build a modern, reliable, and well-documented data warehouse. The
 *   **Data Testing**: Automation of tests to validate data quality, such as null checks, uniqueness, and referential integrity.
 *   **Automated Documentation**: dbt automatically generates complete project documentation, including a DAG (Directed Acyclic Graph) of the dependencies between models.
 
+## Improved dbt Repository
+
+### Additional Content
+- Staging, intermediate, and mart layers
+- Incremental models and snapshots
+- Testing and documentation
