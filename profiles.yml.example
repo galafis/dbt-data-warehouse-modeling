@@ -1,0 +1,53 @@
+# Example dbt profiles configuration
+# Copy this file to ~/.dbt/profiles.yml and configure your database connection
+
+data_warehouse:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: analytics_user
+      password: "{{ env_var('DBT_PASSWORD') }}"
+      port: 5432
+      dbname: analytics
+      schema: dbt_dev
+      threads: 4
+      keepalives_idle: 0
+    
+    prod:
+      type: postgres
+      host: prod-db.company.com
+      user: analytics_user
+      password: "{{ env_var('DBT_PASSWORD') }}"
+      port: 5432
+      dbname: analytics
+      schema: dbt_prod
+      threads: 8
+      keepalives_idle: 0
+
+    # BigQuery example
+    bigquery_dev:
+      type: bigquery
+      method: service-account
+      project: my-gcp-project
+      dataset: dbt_dev
+      threads: 4
+      keyfile: /path/to/service-account.json
+      location: US
+      timeout_seconds: 300
+      priority: interactive
+      retries: 1
+
+    # Snowflake example
+    snowflake_dev:
+      type: snowflake
+      account: my_account.us-east-1
+      user: dbt_user
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: TRANSFORMER
+      database: ANALYTICS
+      warehouse: TRANSFORMING
+      schema: dbt_dev
+      threads: 4
+      client_session_keep_alive: False

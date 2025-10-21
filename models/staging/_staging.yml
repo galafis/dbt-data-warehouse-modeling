@@ -1,0 +1,199 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw data from source systems
+    database: raw_data
+    schema: public
+    tables:
+      - name: orders
+        description: Raw orders data from e-commerce platform
+        columns:
+          - name: order_id
+            description: Primary key for orders
+            tests:
+              - unique
+              - not_null
+          - name: customer_id
+            description: Foreign key to customers
+          - name: product_id
+            description: Foreign key to products
+          - name: order_date
+            description: Date when order was placed
+          - name: ship_date
+            description: Date when order was shipped
+          - name: sales
+            description: Sales amount in dollars
+          - name: quantity
+            description: Quantity of items ordered
+          - name: discount
+            description: Discount rate applied
+          - name: profit
+            description: Profit amount in dollars
+      
+      - name: customers
+        description: Raw customer data
+        columns:
+          - name: customer_id
+            description: Primary key for customers
+            tests:
+              - unique
+              - not_null
+          - name: customer_name
+            description: Customer full name
+          - name: segment
+            description: Customer segment (Consumer, Corporate, Home Office)
+          - name: country
+            description: Customer country
+          - name: city
+            description: Customer city
+          - name: state
+            description: Customer state
+          - name: region
+            description: Customer region
+      
+      - name: products
+        description: Raw product data
+        columns:
+          - name: product_id
+            description: Primary key for products
+            tests:
+              - unique
+              - not_null
+          - name: product_name
+            description: Product name
+          - name: category
+            description: Product category
+          - name: sub_category
+            description: Product sub-category
+
+models:
+  - name: stg_orders
+    description: >
+      Staging layer for orders data. Cleans, standardizes, and validates raw orders data.
+      This model applies data quality checks and filters out invalid records.
+    columns:
+      - name: order_id
+        description: Primary key for orders
+        tests:
+          - unique
+          - not_null
+      
+      - name: customer_id
+        description: Foreign key to customers
+        tests:
+          - not_null
+      
+      - name: product_id
+        description: Foreign key to products
+        tests:
+          - not_null
+      
+      - name: order_date
+        description: Date when order was placed
+        tests:
+          - not_null
+      
+      - name: ship_date
+        description: Date when order was shipped
+      
+      - name: sales_amount
+        description: Sales amount in dollars
+        tests:
+          - not_null
+          - accepted_range:
+              min_value: 0
+              max_value: 1000000
+      
+      - name: quantity
+        description: Quantity of items ordered
+        tests:
+          - not_null
+          - accepted_range:
+              min_value: 1
+              max_value: 10000
+      
+      - name: discount_rate
+        description: Discount rate applied (0 to 1)
+        tests:
+          - accepted_range:
+              min_value: 0
+              max_value: 1
+      
+      - name: profit_amount
+        description: Profit amount in dollars
+        tests:
+          - not_null
+      
+      - name: profit_margin
+        description: Profit margin as a ratio
+      
+      - name: days_to_ship
+        description: Number of days between order and ship date
+        tests:
+          - accepted_range:
+              min_value: 0
+              max_value: 365
+  
+  - name: stg_customers
+    description: Staging layer for customer data
+    columns:
+      - name: customer_id
+        description: Primary key for customers
+        tests:
+          - unique
+          - not_null
+      
+      - name: customer_name
+        description: Customer full name
+        tests:
+          - not_null
+      
+      - name: segment
+        description: Customer segment
+        tests:
+          - accepted_values:
+              values: ['consumer', 'corporate', 'home office']
+      
+      - name: country
+        description: Customer country
+        tests:
+          - not_null
+      
+      - name: city
+        description: Customer city
+      
+      - name: state
+        description: Customer state
+      
+      - name: region
+        description: Customer region
+        tests:
+          - accepted_values:
+              values: ['west', 'east', 'central', 'south', 'north']
+  
+  - name: stg_products
+    description: Staging layer for product data
+    columns:
+      - name: product_id
+        description: Primary key for products
+        tests:
+          - unique
+          - not_null
+      
+      - name: product_name
+        description: Product name
+        tests:
+          - not_null
+      
+      - name: category
+        description: Product category
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['furniture', 'office supplies', 'technology']
+      
+      - name: sub_category
+        description: Product sub-category
+        tests:
+          - not_null
