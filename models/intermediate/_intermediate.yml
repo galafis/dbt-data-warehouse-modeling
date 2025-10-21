@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: int_orders_enriched
+    description: >
+      Intermediate model that enriches orders with customer and product information.
+      This model performs joins and adds calculated fields.
+    columns:
+      - name: order_id
+        description: Primary key for orders
+        tests:
+          - unique
+          - not_null
+      
+      - name: customer_id
+        description: Foreign key to customers
+        tests:
+          - not_null
+      
+      - name: product_id
+        description: Foreign key to products
+        tests:
+          - not_null
+      
+      - name: order_date
+        description: Date when order was placed
+      
+      - name: customer_name
+        description: Customer full name
+      
+      - name: customer_segment
+        description: Customer segment
+      
+      - name: product_name
+        description: Product name
+      
+      - name: product_category
+        description: Product category
+      
+      - name: total_amount
+        description: Total order amount including discounts
+        tests:
+          - not_null
+          - accepted_range:
+              min_value: 0
+      
+      - name: is_profitable
+        description: Flag indicating if order was profitable
+      
+      - name: days_to_ship
+        description: Number of days between order and shipment
+
+  - name: int_customer_metrics
+    description: >
+      Intermediate model that calculates customer-level metrics from orders.
+    columns:
+      - name: customer_id
+        description: Primary key for customers
+        tests:
+          - unique
+          - not_null
+      
+      - name: first_order_date
+        description: Date of customer's first order
+      
+      - name: last_order_date
+        description: Date of customer's most recent order
+      
+      - name: total_orders
+        description: Total number of orders placed by customer
+        tests:
+          - not_null
+          - accepted_range:
+              min_value: 0
+      
+      - name: total_sales
+        description: Total sales amount from customer
+        tests:
+          - not_null
+          - accepted_range:
+              min_value: 0
+      
+      - name: total_profit
+        description: Total profit from customer
+        tests:
+          - not_null
+      
+      - name: avg_order_value
+        description: Average order value for customer
+        tests:
+          - accepted_range:
+              min_value: 0
+      
+      - name: days_as_customer
+        description: Number of days since first order

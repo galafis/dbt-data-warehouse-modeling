@@ -1,0 +1,166 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: >
+      Fact table for orders. Contains one row per order with associated metrics and dimensions.
+      This is the main fact table for order analysis.
+    config:
+      materialized: incremental
+      unique_key: order_id
+    columns:
+      - name: order_id
+        description: Primary key for orders
+        tests:
+          - unique
+          - not_null
+      
+      - name: customer_id
+        description: Foreign key to dim_customers
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      
+      - name: product_id
+        description: Foreign key to dim_products
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_products')
+              field: product_id
+      
+      - name: order_date
+        description: Date when order was placed
+        tests:
+          - not_null
+      
+      - name: ship_date
+        description: Date when order was shipped
+      
+      - name: sales_amount
+        description: Sales amount before discount
+        tests:
+          - not_null
+          - accepted_range:
+              min_value: 0
+      
+      - name: net_sales
+        description: Sales amount after discount
+        tests:
+          - not_null
+          - accepted_range:
+              min_value: 0
+      
+      - name: profit_amount
+        description: Profit amount
+        tests:
+          - not_null
+      
+      - name: quantity
+        description: Quantity of items
+        tests:
+          - not_null
+          - accepted_range:
+              min_value: 1
+      
+      - name: discount_rate
+        description: Discount rate applied
+      
+      - name: profit_margin
+        description: Profit margin ratio
+      
+      - name: days_to_ship
+        description: Days between order and shipment
+      
+      - name: is_profitable
+        description: Whether order was profitable
+      
+      - name: has_discount
+        description: Whether order had a discount
+
+  - name: dim_customers
+    description: >
+      Dimension table for customers. Contains one row per customer with attributes and metrics.
+    columns:
+      - name: customer_id
+        description: Primary key for customers
+        tests:
+          - unique
+          - not_null
+      
+      - name: customer_name
+        description: Customer full name
+        tests:
+          - not_null
+      
+      - name: segment
+        description: Customer segment
+        tests:
+          - accepted_values:
+              values: ['consumer', 'corporate', 'home office']
+      
+      - name: country
+        description: Customer country
+      
+      - name: city
+        description: Customer city
+      
+      - name: state
+        description: Customer state
+      
+      - name: region
+        description: Customer region
+      
+      - name: first_order_date
+        description: Date of first order
+      
+      - name: last_order_date
+        description: Date of most recent order
+      
+      - name: total_orders
+        description: Total number of orders
+        tests:
+          - not_null
+      
+      - name: lifetime_value
+        description: Total sales from customer
+        tests:
+          - not_null
+      
+      - name: lifetime_profit
+        description: Total profit from customer
+        tests:
+          - not_null
+      
+      - name: avg_order_value
+        description: Average order value
+      
+      - name: customer_type
+        description: Customer type based on order frequency
+
+  - name: dim_products
+    description: >
+      Dimension table for products. Contains one row per product with attributes.
+    columns:
+      - name: product_id
+        description: Primary key for products
+        tests:
+          - unique
+          - not_null
+      
+      - name: product_name
+        description: Product name
+        tests:
+          - not_null
+      
+      - name: category
+        description: Product category
+        tests:
+          - not_null
+      
+      - name: sub_category
+        description: Product sub-category
+        tests:
+          - not_null

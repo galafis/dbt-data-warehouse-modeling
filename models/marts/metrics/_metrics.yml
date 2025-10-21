@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: revenue_by_month
+    description: >
+      Monthly revenue metrics aggregated from orders.
+      Provides time-series analysis of revenue, profit, and order counts.
+    columns:
+      - name: year_month
+        description: Year and month of aggregation
+        tests:
+          - unique
+          - not_null
+      
+      - name: order_count
+        description: Number of orders in the month
+        tests:
+          - not_null
+      
+      - name: total_revenue
+        description: Total revenue for the month
+        tests:
+          - not_null
+          - accepted_range:
+              min_value: 0
+      
+      - name: total_profit
+        description: Total profit for the month
+        tests:
+          - not_null
+      
+      - name: avg_order_value
+        description: Average order value for the month
+      
+      - name: profit_margin
+        description: Average profit margin for the month
+
+  - name: customer_cohorts
+    description: >
+      Customer cohort analysis showing retention and lifetime value by acquisition month.
+    columns:
+      - name: cohort_month
+        description: Month when customers made their first purchase
+        tests:
+          - not_null
+      
+      - name: customers
+        description: Number of customers in cohort
+        tests:
+          - not_null
+          - accepted_range:
+              min_value: 1
+      
+      - name: total_orders
+        description: Total orders from cohort
+      
+      - name: total_revenue
+        description: Total revenue from cohort
+      
+      - name: avg_customer_value
+        description: Average lifetime value per customer in cohort
