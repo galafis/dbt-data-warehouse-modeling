@@ -11,6 +11,9 @@ jobs:
   dbt-compile-and-test:
     name: Compile and Test dbt Models
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     
     steps:
       - name: Checkout code
@@ -96,6 +99,8 @@ jobs:
   lint-yaml:
     name: Lint YAML Files
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
@@ -116,6 +121,8 @@ jobs:
   sql-linter:
     name: SQL Linting
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
