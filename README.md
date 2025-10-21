@@ -2,7 +2,7 @@
 
 ![dbt](https://img.shields.io/badge/dbt-FF694B?style=for-the-badge&logo=dbt&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-025E8C?style=for-the-badge&logo=sql&logoColor=white) ![YAML](https://img.shields.io/badge/YAML-CB171E?style=for-the-badge&logo=yaml&logoColor=white) ![Jinja](https://img.shields.io/badge/Jinja-B41717?style=for-the-badge&logo=jinja&logoColor=white) ![Analytics Engineering](https://img.shields.io/badge/Analytics_Engineering-00C853?style=for-the-badge)
 
-[![dbt CI/CD](https://github.com/galafis/dbt-data-warehouse-modeling/actions/workflows/dbt-ci.yml/badge.svg)](https://github.com/galafis/dbt-data-warehouse-modeling/actions/workflows/dbt-ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Languages](https://img.shields.io/github/languages/count/galafis/dbt-data-warehouse-modeling) ![Top Language](https://img.shields.io/github/languages/top/galafis/dbt-data-warehouse-modeling)
+[![dbt CI/CD](https://github.com/galafis/dbt-data-warehouse-modeling/actions/workflows/dbt-ci.yml/badge.svg?branch=main)](https://github.com/galafis/dbt-data-warehouse-modeling/actions/workflows/dbt-ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Languages](https://img.shields.io/github/languages/count/galafis/dbt-data-warehouse-modeling) ![Top Language](https://img.shields.io/github/languages/top/galafis/dbt-data-warehouse-modeling)
 
 ---
 
