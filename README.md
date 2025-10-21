@@ -652,7 +652,7 @@ O projeto inclui testes abrangentes em múltiplas camadas:
 
 ### 🚦 Status do Projeto
 
-![Models](https://img.shields.io/badge/models-10-green) ![Tests](https://img.shields.io/badge/tests-82-blue) ![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
+![Models](https://img.shields.io/badge/models-10-green) ![Tests](https://img.shields.io/badge/tests-82+-blue) ![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen) ![Security](https://img.shields.io/badge/security-0_vulnerabilities-success) ![Lines](https://img.shields.io/badge/code-717_lines-informational) ![Docs](https://img.shields.io/badge/docs-2196_lines-blueviolet)
 
 ### 🎯 Próximos Passos
 
