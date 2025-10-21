@@ -1,8 +1,8 @@
 # Modern Data Warehouse Modeling with dbt
 
-![dbt](https://img.shields.io/badge/dbt-FF694B?style=for-the-badge&logo=dbt&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-025E8C?style=for-the-badge&logo=sql&logoColor=white) ![Analytics Engineering](https://img.shields.io/badge/Analytics_Engineering-00C853?style=for-the-badge)
+![dbt](https://img.shields.io/badge/dbt-FF694B?style=for-the-badge&logo=dbt&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-025E8C?style=for-the-badge&logo=sql&logoColor=white) ![YAML](https://img.shields.io/badge/YAML-CB171E?style=for-the-badge&logo=yaml&logoColor=white) ![Jinja](https://img.shields.io/badge/Jinja-B41717?style=for-the-badge&logo=jinja&logoColor=white) ![Analytics Engineering](https://img.shields.io/badge/Analytics_Engineering-00C853?style=for-the-badge)
 
-[![dbt CI/CD](https://github.com/galafis/dbt-data-warehouse-modeling/actions/workflows/dbt-ci.yml/badge.svg)](https://github.com/galafis/dbt-data-warehouse-modeling/actions/workflows/dbt-ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![dbt CI/CD](https://github.com/galafis/dbt-data-warehouse-modeling/actions/workflows/dbt-ci.yml/badge.svg)](https://github.com/galafis/dbt-data-warehouse-modeling/actions/workflows/dbt-ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Languages](https://img.shields.io/github/languages/count/galafis/dbt-data-warehouse-modeling) ![Top Language](https://img.shields.io/github/languages/top/galafis/dbt-data-warehouse-modeling)
 
 ---
 
@@ -127,6 +127,14 @@ dbt-data-warehouse-modeling/
 - 🔧 4 Macros Customizadas
 - 📸 1 Snapshot para histórico
 - 📈 1 Seed de dados de referência
+
+**Tecnologias e Linguagens:**
+- 💾 **SQL**: Linguagem principal para transformações de dados (18 arquivos)
+- 📋 **YAML**: Configuração de modelos, testes e documentação (7 arquivos)
+- 🎨 **Jinja**: Template engine para SQL dinâmico (integrado nos arquivos SQL)
+- 🐘 **PostgreSQL**: Banco de dados de desenvolvimento e CI/CD
+- ⚙️ **dbt Core**: Framework de transformação de dados
+- 🔄 **GitHub Actions**: Pipeline de CI/CD automatizado
 ```
 
 ### 🚀 Quick Start
@@ -675,6 +683,15 @@ Complete and professional **Analytics Engineering** project using **dbt (data bu
 - **4 Custom Macros**: Reusable utilities and test functions
 - **1 Snapshot**: SCD Type 2 implementation
 - **CI/CD Pipeline**: Automated testing on every commit
+
+### 🛠️ Technologies & Languages
+
+- 💾 **SQL**: Primary language for data transformations (18 files)
+- 📋 **YAML**: Model configuration, tests, and documentation (7 files)
+- 🎨 **Jinja**: Template engine for dynamic SQL (embedded in SQL files)
+- 🐘 **PostgreSQL**: Development and CI/CD database
+- ⚙️ **dbt Core**: Data transformation framework
+- 🔄 **GitHub Actions**: Automated CI/CD pipeline
 
 ### 🚀 Quick Start
 

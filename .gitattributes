@@ -1,0 +1,36 @@
+# dbt Data Warehouse Modeling - Language Attribution
+# This file helps GitHub Linguist properly detect and display project languages
+
+# SQL files - Core language of dbt models
+*.sql linguist-language=SQL
+*.sql linguist-detectable=true
+
+# YAML files - Configuration and documentation
+*.yml linguist-language=YAML
+*.yaml linguist-language=YAML
+*.yml linguist-detectable=true
+*.yaml linguist-detectable=true
+
+# Jinja templating in SQL files (dbt uses Jinja)
+# Mark SQL files as vendored if they are compiled/generated
+target/** linguist-vendored
+dbt_packages/** linguist-vendored
+logs/** linguist-vendored
+
+# Documentation files
+*.md linguist-documentation
+
+# Configuration files should not be counted as code
+.user.yml linguist-vendored
+profiles.yml linguist-vendored
+profiles.yml.example linguist-vendored
+
+# Seeds are data, not code
+seeds/** linguist-vendored=false
+seeds/*.csv linguist-language=CSV
+
+# Ensure models, tests, macros, and snapshots are counted
+models/** linguist-vendored=false
+tests/** linguist-vendored=false
+macros/** linguist-vendored=false
+snapshots/** linguist-vendored=false
