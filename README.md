@@ -613,6 +613,7 @@ dbt run --select state:modified+
 ### 📚 Documentação Adicional
 
 **Documentação do Projeto**:
+- [🗣️ Linguagens e Tecnologias](LANGUAGES.md) - Detalhamento das linguagens e tecnologias usadas
 - [📐 Arquitetura Detalhada](docs/ARCHITECTURE.md) - Visão completa da arquitetura e best practices
 - [🔄 Fluxo de Dados](docs/DATA_FLOW.md) - Diagramas de lineage e dependências
 - [❓ FAQ](docs/FAQ.md) - Perguntas frequentes e respostas
@@ -729,6 +730,7 @@ dbt docs generate && dbt docs serve
 
 ### 📚 Documentation
 
+- [Languages & Technologies](LANGUAGES.md) - Detailed breakdown of languages and technologies used
 - [Architecture](docs/ARCHITECTURE.md) - Detailed architecture documentation
 - [Data Flow](docs/DATA_FLOW.md) - Lineage diagrams
 - [FAQ](docs/FAQ.md) - Frequently asked questions
