@@ -15,6 +15,21 @@ jobs:
       contents: read
       actions: read
     
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: ci_user
+          POSTGRES_PASSWORD: ci_password
+          POSTGRES_DB: ci_analytics
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -30,6 +45,41 @@ jobs:
           pip install --upgrade pip
           pip install dbt-core dbt-postgres dbt-bigquery
           dbt --version
+      
+      - name: Create profiles.yml for CI/CD
+        run: |
+          cat > profiles.yml << 'EOF'
+          # dbt profiles configuration for CI/CD
+          data_warehouse:
+            target: dev
+            outputs:
+              dev:
+                type: postgres
+                host: localhost
+                user: ci_user
+                password: ci_password
+                port: 5432
+                dbname: ci_analytics
+                schema: dbt_dev
+                threads: 4
+                keepalives_idle: 0
+          EOF
+      
+      - name: Set up database schemas and tables
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+          # Create main schemas
+          PGPASSWORD=ci_password psql -h localhost -U ci_user -d ci_analytics -c "CREATE SCHEMA IF NOT EXISTS dbt_dev;"
+          PGPASSWORD=ci_password psql -h localhost -U ci_user -d ci_analytics -c "CREATE SCHEMA IF NOT EXISTS staging;"
+          PGPASSWORD=ci_password psql -h localhost -U ci_user -d ci_analytics -c "CREATE SCHEMA IF NOT EXISTS intermediate;"
+          PGPASSWORD=ci_password psql -h localhost -U ci_user -d ci_analytics -c "CREATE SCHEMA IF NOT EXISTS marts;"
+          PGPASSWORD=ci_password psql -h localhost -U ci_user -d ci_analytics -c "CREATE SCHEMA IF NOT EXISTS seeds;"
+          # Create raw data schema and mock source tables
+          PGPASSWORD=ci_password psql -h localhost -U ci_user -d ci_analytics -c "CREATE SCHEMA IF NOT EXISTS public;"
+          PGPASSWORD=ci_password psql -h localhost -U ci_user -d ci_analytics -c "CREATE TABLE IF NOT EXISTS public.orders (order_id VARCHAR, customer_id VARCHAR, product_id VARCHAR, order_date DATE, ship_date DATE, ship_mode VARCHAR, segment VARCHAR, country VARCHAR, city VARCHAR, state VARCHAR, region VARCHAR, category VARCHAR, sub_category VARCHAR, product_name VARCHAR, sales NUMERIC, quantity INTEGER, discount NUMERIC, profit NUMERIC);"
+          PGPASSWORD=ci_password psql -h localhost -U ci_user -d ci_analytics -c "CREATE TABLE IF NOT EXISTS public.customers (customer_id VARCHAR, customer_name VARCHAR, segment VARCHAR, country VARCHAR, city VARCHAR, state VARCHAR, region VARCHAR);"
+          PGPASSWORD=ci_password psql -h localhost -U ci_user -d ci_analytics -c "CREATE TABLE IF NOT EXISTS public.products (product_id VARCHAR, product_name VARCHAR, category VARCHAR, sub_category VARCHAR);"
       
       - name: Compile dbt models
         run: |

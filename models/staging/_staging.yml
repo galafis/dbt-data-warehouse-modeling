@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: raw
     description: Raw data from source systems
-    database: raw_data
+    database: "{{ target.database }}"
     schema: public
     tables:
       - name: orders
