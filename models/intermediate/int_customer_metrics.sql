@@ -49,7 +49,7 @@ final as (
         *,
         
         -- Calculated fields
-        datediff(day, first_order_date, last_order_date) as days_as_customer,
+        (last_order_date - first_order_date) as days_as_customer,
         
         case
             when total_profit > 0 then total_profit / nullif(total_sales, 0)
@@ -57,8 +57,8 @@ final as (
         end as lifetime_profit_margin,
         
         case
-            when days_as_customer > 0 
-            then total_orders::float / nullif(days_as_customer, 0) * 365
+            when (last_order_date - first_order_date) > 0 
+            then total_orders::float / nullif((last_order_date - first_order_date), 0) * 365
             else 0
         end as orders_per_year
         

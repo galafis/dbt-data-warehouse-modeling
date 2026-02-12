@@ -125,25 +125,7 @@ connection to server at "localhost" (::1), port 5432 failed
 3. Hard refresh browser: Ctrl+Shift+R (or Cmd+Shift+R)
 4. Check schema.yml files are saved
 
-### 7. CI/CD Issues
-
-#### Issue: "GitHub Actions failing"
-
-**Solutions**:
-1. Check workflow logs in GitHub Actions tab
-2. Verify profiles.yml is properly configured
-3. Ensure all dependencies are installed
-4. Test locally first: `dbt compile`
-
-#### Issue: "Tests passing locally but failing in CI"
-
-**Solutions**:
-1. Check environment variables in CI
-2. Verify database state between environments
-3. Review data dependencies
-4. Check for hardcoded values
-
-### 8. Common dbt Commands
+### 7. Common dbt Commands
 
 #### Debug connection:
 ```bash
@@ -180,7 +162,7 @@ dbt run --full-refresh --select model_name
 dbt run --select state:modified+
 ```
 
-### 9. Best Practices for Debugging
+### 8. Best Practices for Debugging
 
 1. **Start Small**: Test individual models before running full project
 2. **Use `dbt compile`**: Check compiled SQL in target/compiled/
@@ -190,7 +172,7 @@ dbt run --select state:modified+
 6. **Version Control**: Commit frequently to track changes
 7. **Read Error Messages**: dbt provides detailed error context
 
-### 10. Getting Help
+### 9. Getting Help
 
 If you're still stuck:
 

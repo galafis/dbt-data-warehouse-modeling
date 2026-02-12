@@ -2,21 +2,21 @@
 
 ![dbt](https://img.shields.io/badge/dbt-FF694B?style=for-the-badge&logo=dbt&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-025E8C?style=for-the-badge&logo=sql&logoColor=white) ![YAML](https://img.shields.io/badge/YAML-CB171E?style=for-the-badge&logo=yaml&logoColor=white) ![Jinja](https://img.shields.io/badge/Jinja-B41717?style=for-the-badge&logo=jinja&logoColor=white) ![Analytics Engineering](https://img.shields.io/badge/Analytics_Engineering-00C853?style=for-the-badge)
 
-[![dbt CI/CD](https://github.com/galafis/dbt-data-warehouse-modeling/actions/workflows/dbt-ci.yml/badge.svg?branch=main)](https://github.com/galafis/dbt-data-warehouse-modeling/actions/workflows/dbt-ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Languages](https://img.shields.io/github/languages/count/galafis/dbt-data-warehouse-modeling) ![Top Language](https://img.shields.io/github/languages/top/galafis/dbt-data-warehouse-modeling)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Languages](https://img.shields.io/github/languages/count/galafis/dbt-data-warehouse-modeling) ![Top Language](https://img.shields.io/github/languages/top/galafis/dbt-data-warehouse-modeling)
 
 ---
 
-## 🇧🇷 Modelagem Moderna de Data Warehouse com dbt
+## Modelagem Moderna de Data Warehouse com dbt
 
-Projeto completo e profissional de **Analytics Engineering** utilizando **dbt (data build tool)**. Demonstra arquitetura em camadas, modelos incrementais, testes automatizados e documentação viva para data warehouses modernos.
+Projeto de **Analytics Engineering** utilizando **dbt (data build tool)**. Demonstra arquitetura em camadas, modelos incrementais, testes automatizados e documentação para data warehouses modernos.
 
-### 🎯 Objetivo
+### Objetivo
 
-Construir um data warehouse moderno, confiável e escalável aplicando princípios de engenharia de software (versionamento, testes, CI/CD) a transformações SQL, permitindo que equipes de dados trabalhem com qualidade e velocidade.
+Construir um data warehouse moderno e confiável aplicando princípios de engenharia de software (versionamento, testes) a transformações SQL, permitindo que equipes de dados trabalhem com qualidade e velocidade.
 
-### 🌟 Por que dbt?
+### Por que dbt?
 
-dbt revolucionou a engenharia de analytics:
+dbt é uma ferramenta popular para engenharia de analytics:
 
 | Aspecto | Antes do dbt | Com dbt |
 |---------|--------------|---------|
@@ -25,17 +25,16 @@ dbt revolucionou a engenharia de analytics:
 | **Documentação** | Desatualizada | Gerada automaticamente |
 | **Dependências** | Gerenciadas manualmente | DAG automático |
 | **Colaboração** | Difícil | Git workflow |
-| **CI/CD** | Raro | Padrão da indústria |
 
-### 📊 Casos de Uso Reais
+### Casos de Uso
 
 1. **E-commerce**: Modelagem de funil de vendas e análise de cohort
 2. **SaaS**: Métricas de produto (MAU, DAU, churn, LTV)
-3. **Fintech**: Agregações de transações e detecção de fraude
+3. **Fintech**: Agregações de transações
 4. **Marketing**: Attribution modeling e ROI de campanhas
 5. **Operações**: KPIs operacionais e dashboards executivos
 
-### 🏗️ Arquitetura em Camadas
+### Arquitetura em Camadas
 
 ```
 ┌─────────────────────────────────────────┐
@@ -68,28 +67,28 @@ dbt revolucionou a engenharia de analytics:
 └─────────────────────────────────────────┘
 ```
 
-### 📂 Estrutura do Repositório
+### Estrutura do Repositório
 
 ```
 dbt-data-warehouse-modeling/
-├── .github/
-│   └── workflows/
-│       └── dbt-ci.yml                    # CI/CD Pipeline
 ├── docs/
-│   └── DATA_FLOW.md                      # Diagrama de fluxo de dados
+│   ├── ARCHITECTURE.md                   # Documentação de arquitetura
+│   ├── DATA_FLOW.md                      # Diagrama de fluxo de dados
+│   ├── FAQ.md                            # Perguntas frequentes
+│   └── TROUBLESHOOTING.md                # Guia de troubleshooting
 ├── images/
 │   └── layered_architecture.png          # Diagrama de arquitetura
 ├── models/
-│   ├── staging/                          # ✅ Camada de Staging
+│   ├── staging/                          # Camada de Staging
 │   │   ├── _staging.yml                  # Documentação e testes
 │   │   ├── stg_orders.sql                # Staging de pedidos
 │   │   ├── stg_customers.sql             # Staging de clientes
 │   │   └── stg_products.sql              # Staging de produtos
-│   ├── intermediate/                     # ✅ Camada Intermediária
+│   ├── intermediate/                     # Camada Intermediária
 │   │   ├── _intermediate.yml             # Documentação e testes
 │   │   ├── int_orders_enriched.sql       # Pedidos enriquecidos
 │   │   └── int_customer_metrics.sql      # Métricas de clientes
-│   └── marts/                            # ✅ Camada de Marts
+│   └── marts/                            # Camada de Marts
 │       ├── core/                         # Modelos core (fatos/dimensões)
 │       │   ├── _core.yml                 # Documentação e testes
 │       │   ├── fct_orders.sql            # Fato: Pedidos
@@ -99,45 +98,43 @@ dbt-data-warehouse-modeling/
 │           ├── _metrics.yml              # Documentação e testes
 │           ├── revenue_by_month.sql      # Receita mensal
 │           └── customer_cohorts.sql      # Análise de cohort
-├── tests/                                # ✅ Testes customizados
+├── tests/                                # Testes customizados
 │   ├── assert_positive_revenue.sql       # Valida receitas positivas
 │   ├── assert_valid_dates.sql            # Valida datas
 │   └── assert_customers_have_orders.sql  # Valida relacionamentos
-├── macros/                               # ✅ Macros reutilizáveis
+├── macros/                               # Macros reutilizáveis
 │   ├── cents_to_dollars.sql              # Conversão de moeda
 │   ├── generate_schema_name.sql          # Geração de schema
 │   ├── surrogate_key.sql                 # Chave surrogate
 │   └── tests/
 │       └── accepted_range.sql            # Teste customizado de range
-├── seeds/                                # ✅ Dados estáticos
+├── seeds/                                # Dados estáticos
 │   └── country_codes.csv                 # Códigos de países
-├── snapshots/                            # ✅ Snapshots SCD Type 2
+├── snapshots/                            # Snapshots SCD Type 2
 │   └── orders_snapshot.sql               # Snapshot de pedidos
-├── analysis/                             # Análises ad-hoc
-├── dbt_project.yml                       # ✅ Configuração do projeto
-├── profiles.yml.example                  # ✅ Exemplo de configuração
-├── .gitignore                            # ✅ Arquivos ignorados
-├── LICENSE                               # ✅ Licença MIT
-├── CONTRIBUTING.md                       # ✅ Guia de contribuição
-└── README.md                             # ✅ Este arquivo
+├── dbt_project.yml                       # Configuração do projeto
+├── profiles.yml.example                  # Exemplo de configuração
+├── .gitignore                            # Arquivos ignorados
+├── LICENSE                               # Licença MIT
+├── CONTRIBUTING.md                       # Guia de contribuição
+└── README.md                             # Este arquivo
 
 **Estatísticas do Projeto:**
-- 📊 10 Modelos SQL (3 staging, 2 intermediate, 5 marts)
-- 🧪 82 Testes de Qualidade de Dados (schema + custom)
-- 🔧 4 Macros Customizadas
-- 📸 1 Snapshot para histórico
-- 📈 1 Seed de dados de referência
+- 10 Modelos SQL (3 staging, 2 intermediate, 5 marts)
+- 82 Testes de Qualidade de Dados (schema + custom)
+- 4 Macros Customizadas
+- 1 Snapshot para histórico
+- 1 Seed de dados de referência
 
 **Tecnologias e Linguagens:**
-- 💾 **SQL**: Linguagem principal para transformações de dados (18 arquivos)
-- 📋 **YAML**: Configuração de modelos, testes e documentação (7 arquivos)
-- 🎨 **Jinja**: Template engine para SQL dinâmico (integrado nos arquivos SQL)
-- 🐘 **PostgreSQL**: Banco de dados de desenvolvimento e CI/CD
-- ⚙️ **dbt Core**: Framework de transformação de dados
-- 🔄 **GitHub Actions**: Pipeline de CI/CD automatizado
+- **SQL**: Linguagem principal para transformações de dados (18 arquivos)
+- **YAML**: Configuração de modelos, testes e documentação (6 arquivos)
+- **Jinja**: Template engine para SQL dinâmico (integrado nos arquivos SQL)
+- **PostgreSQL**: Banco de dados de desenvolvimento (padrão)
+- **dbt Core**: Framework de transformação de dados
 ```
 
-### 🚀 Quick Start
+### Quick Start
 
 #### 1. Clonar o Repositório
 
@@ -216,46 +213,32 @@ dbt list
 dbt docs generate && dbt docs serve
 ```
 
-### 💻 Exemplos de Modelos
+### Exemplos de Modelos
+
+Each layer in the project builds on the previous one. See the actual model files for full implementations.
 
 #### Staging Layer
 
+Staging models clean and standardize raw data. For example, `stg_orders.sql` applies type casts, data quality checks, and filters out invalid records:
+
 ```sql
--- models/staging/stg_orders.sql
-
-{{
-  config(
-    materialized='view'
-  )
-}}
-
+-- models/staging/stg_orders.sql (simplified)
 with source as (
     select * from {{ source('raw', 'orders') }}
 ),
 
 renamed as (
     select
-        -- IDs
         order_id,
         customer_id,
-        
-        -- Timestamps
-        order_date::date as order_date,
-        created_at::timestamp as created_at,
-        
-        -- Amounts (convert cents to dollars)
-        {{ cents_to_dollars('amount_cents') }} as order_amount,
-        {{ cents_to_dollars('tax_cents') }} as tax_amount,
-        {{ cents_to_dollars('shipping_cents') }} as shipping_amount,
-        
-        -- Status
-        lower(status) as order_status,
-        
-        -- Metadata
-        _loaded_at
-        
+        product_id,
+        cast(order_date as date) as order_date,
+        cast(sales as numeric(10,2)) as sales_amount,
+        cast(quantity as integer) as quantity,
+        cast(discount as numeric(5,4)) as discount_rate,
+        cast(profit as numeric(10,2)) as profit_amount,
+        current_timestamp as loaded_at
     from source
-    where deleted_at is null  -- Exclude soft-deleted records
 )
 
 select * from renamed
@@ -263,251 +246,110 @@ select * from renamed
 
 #### Intermediate Layer
 
+Intermediate models join and enrich data. `int_orders_enriched.sql` combines orders with customer and product data:
+
 ```sql
--- models/intermediate/int_orders_enriched.sql
-
-{{
-  config(
-    materialized='ephemeral'
-  )
-}}
-
+-- models/intermediate/int_orders_enriched.sql (simplified)
 with orders as (
     select * from {{ ref('stg_orders') }}
 ),
-
 customers as (
     select * from {{ ref('stg_customers') }}
 ),
-
 products as (
     select * from {{ ref('stg_products') }}
 ),
-
 enriched as (
     select
-        -- Order info
         o.order_id,
         o.order_date,
-        o.order_amount,
-        o.order_status,
-        
-        -- Customer info
-        c.customer_id,
+        o.sales_amount,
         c.customer_name,
-        c.customer_email,
-        c.customer_segment,
-        c.first_order_date,
-        
-        -- Product info
-        p.product_id,
+        c.segment as customer_segment,
         p.product_name,
-        p.product_category,
-        
-        -- Calculated fields
-        o.order_amount + o.tax_amount + o.shipping_amount as total_amount,
-        datediff('day', c.first_order_date, o.order_date) as days_since_first_order,
-        
-        -- Flags
-        case 
-            when o.order_date = c.first_order_date then true 
-            else false 
-        end as is_first_order
-        
+        p.category as product_category,
+        o.sales_amount * (1 - o.discount_rate) as net_sales
     from orders o
     left join customers c on o.customer_id = c.customer_id
     left join products p on o.product_id = p.product_id
 )
-
 select * from enriched
 ```
 
 #### Marts Layer - Fact Table
 
-```sql
--- models/marts/core/fct_orders.sql
+`fct_orders.sql` is an incremental model that serves as the main fact table:
 
+```sql
+-- models/marts/core/fct_orders.sql (simplified)
 {{
   config(
     materialized='incremental',
-    unique_key='order_id',
-    on_schema_change='fail'
+    unique_key='order_id'
   )
 }}
 
 with orders_enriched as (
     select * from {{ ref('int_orders_enriched') }}
-    
     {% if is_incremental() %}
-    -- Only process new/updated orders
-    where order_date >= (select max(order_date) from {{ this }})
+    where order_date >= (select max(order_date) - interval '7 days' from {{ this }})
     {% endif %}
-),
-
-final as (
-    select
-        -- Keys
-        {{ dbt_utils.generate_surrogate_key(['order_id']) }} as order_key,
-        order_id,
-        customer_id,
-        product_id,
-        
-        -- Dates
-        order_date,
-        
-        -- Measures
-        order_amount,
-        tax_amount,
-        shipping_amount,
-        total_amount,
-        
-        -- Attributes
-        order_status,
-        is_first_order,
-        days_since_first_order,
-        
-        -- Metadata
-        current_timestamp as _dbt_loaded_at
-        
-    from orders_enriched
 )
-
-select * from final
+select
+    order_id, customer_id, product_id,
+    order_date, sales_amount, net_sales, profit_amount,
+    customer_segment, product_category,
+    current_timestamp as _dbt_loaded_at
+from orders_enriched
 ```
 
-#### Marts Layer - Dimension Table
-
-```sql
--- models/marts/core/dim_customers.sql
-
-{{
-  config(
-    materialized='table'
-  )
-}}
-
-with customers as (
-    select * from {{ ref('stg_customers') }}
-),
-
-customer_orders as (
-    select
-        customer_id,
-        count(*) as total_orders,
-        sum(total_amount) as lifetime_value,
-        min(order_date) as first_order_date,
-        max(order_date) as last_order_date
-    from {{ ref('fct_orders') }}
-    group by customer_id
-),
-
-final as (
-    select
-        -- Keys
-        {{ dbt_utils.generate_surrogate_key(['c.customer_id']) }} as customer_key,
-        c.customer_id,
-        
-        -- Attributes
-        c.customer_name,
-        c.customer_email,
-        c.customer_segment,
-        c.country_code,
-        
-        -- Metrics
-        coalesce(co.total_orders, 0) as total_orders,
-        coalesce(co.lifetime_value, 0) as lifetime_value,
-        co.first_order_date,
-        co.last_order_date,
-        
-        -- Calculated
-        case 
-            when co.total_orders = 0 then 'Never Purchased'
-            when co.total_orders = 1 then 'One-Time'
-            when co.total_orders <= 5 then 'Occasional'
-            else 'Frequent'
-        end as customer_type,
-        
-        -- Metadata
-        c._loaded_at,
-        current_timestamp as _dbt_loaded_at
-        
-    from customers c
-    left join customer_orders co on c.customer_id = co.customer_id
-)
-
-select * from final
-```
-
-### 🧪 Testes de Qualidade
+### Testes de Qualidade
 
 #### Testes Genéricos (schema.yml)
 
+All models have schema-level tests defined in their `_*.yml` files. For example:
+
 ```yaml
-# models/staging/_staging.yml
-
-version: 2
-
-models:
-  - name: stg_orders
-    description: "Staging layer for orders"
-    columns:
-      - name: order_id
-        description: "Primary key"
-        tests:
-          - unique
-          - not_null
-      
-      - name: customer_id
-        description: "Foreign key to customers"
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg_customers')
-              field: customer_id
-      
-      - name: order_amount
-        description: "Order amount in dollars"
-        tests:
-          - not_null
-          - dbt_utils.accepted_range:
-              min_value: 0
-              max_value: 1000000
-      
-      - name: order_status
-        description: "Order status"
-        tests:
-          - accepted_values:
-              values: ['pending', 'processing', 'shipped', 'delivered', 'cancelled']
+columns:
+  - name: order_id
+    description: Primary key for orders
+    tests:
+      - unique
+      - not_null
+  
+  - name: sales_amount
+    description: Sales amount in dollars
+    tests:
+      - not_null
+      - accepted_range:
+          min_value: 0
+          max_value: 1000000
 ```
 
 #### Testes Singulares (SQL)
 
 ```sql
 -- tests/assert_positive_revenue.sql
-
--- Ensure all revenue values are positive
 select
     order_id,
-    order_amount
+    sales_amount,
+    net_sales
 from {{ ref('fct_orders') }}
-where order_amount < 0
+where sales_amount < 0 
+   or net_sales < 0
 ```
 
-### 🔧 Macros Úteis
+### Macros
 
 ```sql
 -- macros/cents_to_dollars.sql
-
 {% macro cents_to_dollars(column_name) %}
     ({{ column_name }} / 100.0)::numeric(10,2)
 {% endmacro %}
-
--- Usage: {{ cents_to_dollars('amount_cents') }}
 ```
 
 ```sql
 -- macros/generate_schema_name.sql
-
 {% macro generate_schema_name(custom_schema_name, node) -%}
     {%- set default_schema = target.schema -%}
     {%- if custom_schema_name is none -%}
@@ -520,57 +362,33 @@ where order_amount < 0
 {%- endmacro %}
 ```
 
-### 📊 Modelos Incrementais
+### Incremental Models
 
-```sql
--- models/marts/metrics/daily_revenue.sql
+`fct_orders` uses incremental materialization to process only new or changed records. See [models/marts/core/fct_orders.sql](models/marts/core/fct_orders.sql) for the full implementation.
 
-{{
-  config(
-    materialized='incremental',
-    unique_key='date',
-    on_schema_change='sync_all_columns'
-  )
-}}
-
-select
-    order_date as date,
-    count(*) as order_count,
-    sum(order_amount) as total_revenue,
-    avg(order_amount) as avg_order_value,
-    current_timestamp as _updated_at
-    
-from {{ ref('fct_orders') }}
-
-{% if is_incremental() %}
-    where order_date > (select max(date) from {{ this }})
-{% endif %}
-
-group by order_date
-```
-
-### 📸 Snapshots (SCD Type 2)
+### Snapshots (SCD Type 2)
 
 ```sql
 -- snapshots/orders_snapshot.sql
-
 {% snapshot orders_snapshot %}
-
 {{
     config(
       target_schema='snapshots',
       unique_key='order_id',
       strategy='timestamp',
-      updated_at='updated_at'
+      updated_at='loaded_at'
     )
 }}
-
-select * from {{ source('raw', 'orders') }}
-
+select 
+    order_id, customer_id, product_id,
+    order_date, ship_date,
+    sales_amount, profit_amount, quantity, discount_rate,
+    loaded_at
+from {{ ref('stg_orders') }}
 {% endsnapshot %}
 ```
 
-### 🎓 Conceitos Avançados
+### Conceitos
 
 #### Materializations
 
@@ -600,25 +418,23 @@ dbt run --select fct_orders+
 dbt run --select state:modified+
 ```
 
-### 💡 Melhores Práticas
+### Melhores Práticas
 
 1. **Use camadas** (staging → intermediate → marts)
 2. **Teste tudo** (unique, not_null, relationships)
 3. **Documente modelos** (descriptions, columns)
 4. **Use refs** ao invés de nomes de tabelas
-5. **Implemente CI/CD** (GitHub Actions, GitLab CI)
-6. **Monitore performance** (dbt Cloud, logs)
-7. **Versionamento semântico** para mudanças breaking
+5. **Monitore performance** (dbt Cloud, logs)
+6. **Versionamento semântico** para mudanças breaking
 
-### 📚 Documentação Adicional
+### Documentação Adicional
 
 **Documentação do Projeto**:
-- [🗣️ Linguagens e Tecnologias](LANGUAGES.md) - Detalhamento das linguagens e tecnologias usadas
-- [📐 Arquitetura Detalhada](docs/ARCHITECTURE.md) - Visão completa da arquitetura e best practices
-- [🔄 Fluxo de Dados](docs/DATA_FLOW.md) - Diagramas de lineage e dependências
-- [❓ FAQ](docs/FAQ.md) - Perguntas frequentes e respostas
-- [🔧 Troubleshooting](docs/TROUBLESHOOTING.md) - Guia de solução de problemas
-- [🤝 Guia de Contribuição](CONTRIBUTING.md) - Como contribuir com o projeto
+- [Arquitetura Detalhada](docs/ARCHITECTURE.md) - Visão completa da arquitetura
+- [Fluxo de Dados](docs/DATA_FLOW.md) - Diagramas de lineage e dependências
+- [FAQ](docs/FAQ.md) - Perguntas frequentes e respostas
+- [Troubleshooting](docs/TROUBLESHOOTING.md) - Guia de solução de problemas
+- [Guia de Contribuição](CONTRIBUTING.md) - Como contribuir com o projeto
 
 **Recursos Externos**:
 - [dbt Documentation](https://docs.getdbt.com/)
@@ -626,20 +442,19 @@ dbt run --select state:modified+
 - [Analytics Engineering Guide](https://www.getdbt.com/analytics-engineering/)
 - [dbt Best Practices](https://docs.getdbt.com/guides/best-practices)
 
-### ✅ Funcionalidades Implementadas
+### Funcionalidades Implementadas
 
-- ✅ **Arquitetura em Camadas**: staging → intermediate → marts
-- ✅ **Modelos Incrementais**: fct_orders com estratégia incremental
-- ✅ **Testes Automatizados**: 82 testes de qualidade de dados
-- ✅ **Documentação Completa**: schema.yml para todos os modelos
-- ✅ **Macros Customizadas**: conversões, testes e utilitários
-- ✅ **CI/CD Pipeline**: GitHub Actions com validação automática
-- ✅ **Snapshots**: histórico de mudanças (SCD Type 2)
-- ✅ **Seeds**: dados de referência versionados
+- Arquitetura em Camadas: staging → intermediate → marts
+- Modelos Incrementais: fct_orders com estratégia incremental
+- Testes Automatizados: 82 testes de qualidade de dados
+- Documentação: schema.yml para todos os modelos
+- Macros Customizadas: conversões, testes e utilitários
+- Snapshots: histórico de mudanças (SCD Type 2)
+- Seeds: dados de referência versionados
 
-### 🧪 Qualidade de Dados e Testes
+### Qualidade de Dados e Testes
 
-O projeto inclui testes abrangentes em múltiplas camadas:
+O projeto inclui testes em múltiplas camadas:
 
 **Testes Schema (YAML):**
 - `unique`: Garante unicidade de chaves primárias
@@ -653,17 +468,7 @@ O projeto inclui testes abrangentes em múltiplas camadas:
 - `assert_valid_dates`: Valida lógica de datas
 - `assert_customers_have_orders`: Valida relacionamentos
 
-**Validação CI/CD:**
-- Compilação automática em cada PR
-- Validação de sintaxe SQL
-- Verificação de estrutura de projeto
-- Geração de documentação
-
-### 🚦 Status do Projeto
-
-![Models](https://img.shields.io/badge/models-10-green) ![Tests](https://img.shields.io/badge/tests-82+-blue) ![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen) ![Security](https://img.shields.io/badge/security-0_vulnerabilities-success) ![Lines](https://img.shields.io/badge/code-717_lines-informational) ![Docs](https://img.shields.io/badge/docs-2196_lines-blueviolet)
-
-### 🎯 Próximos Passos
+### Próximos Passos
 
 - [ ] Adicionar mais modelos de métricas (churn, LTV detalhado)
 - [ ] Implementar testes de performance
@@ -673,28 +478,26 @@ O projeto inclui testes abrangentes em múltiplas camadas:
 
 ---
 
-## 🇬🇧 Modern Data Warehouse Modeling with dbt
+## Modern Data Warehouse Modeling with dbt
 
-Complete and professional **Analytics Engineering** project using **dbt (data build tool)**. Demonstrates layered architecture, incremental models, automated testing, and living documentation for modern data warehouses.
+**Analytics Engineering** project using **dbt (data build tool)**. Demonstrates layered architecture, incremental models, automated testing, and documentation for modern data warehouses.
 
-### 📊 Project Overview
+### Project Overview
 
 - **10 SQL Models**: Organized in 3 layers (staging → intermediate → marts)
-- **82+ Data Tests**: Comprehensive quality checks on all models
+- **82 Data Tests**: Quality checks on all models
 - **4 Custom Macros**: Reusable utilities and test functions
 - **1 Snapshot**: SCD Type 2 implementation
-- **CI/CD Pipeline**: Automated testing on every commit
 
-### 🛠️ Technologies & Languages
+### Technologies
 
-- 💾 **SQL**: Primary language for data transformations (18 files)
-- 📋 **YAML**: Model configuration, tests, and documentation (7 files)
-- 🎨 **Jinja**: Template engine for dynamic SQL (embedded in SQL files)
-- 🐘 **PostgreSQL**: Development and CI/CD database
-- ⚙️ **dbt Core**: Data transformation framework
-- 🔄 **GitHub Actions**: Automated CI/CD pipeline
+- **SQL**: Primary language for data transformations (18 files)
+- **YAML**: Model configuration, tests, and documentation (6 files)
+- **Jinja**: Template engine for dynamic SQL (embedded in SQL files)
+- **PostgreSQL**: Default development database
+- **dbt Core**: Data transformation framework
 
-### 🚀 Quick Start
+### Quick Start (English)
 
 ```bash
 # Clone repository
@@ -717,36 +520,33 @@ dbt test
 dbt docs generate && dbt docs serve
 ```
 
-### 🎓 Key Learnings
+### Key Learnings
 
-- ✅ Build layered data warehouse (staging → intermediate → marts)
-- ✅ Implement incremental models for large fact tables
-- ✅ Write comprehensive automated data tests
-- ✅ Create reusable macros and custom tests
-- ✅ Generate living, auto-updated documentation
-- ✅ Set up CI/CD pipeline with GitHub Actions
-- ✅ Apply Analytics Engineering best practices
-- ✅ Version control your data transformations
+- Build layered data warehouse (staging → intermediate → marts)
+- Implement incremental models for large fact tables
+- Write automated data tests
+- Create reusable macros and custom tests
+- Generate auto-updated documentation
+- Apply Analytics Engineering best practices
+- Version control your data transformations
 
-### 📚 Documentation
+### Documentation
 
-- [Languages & Technologies](LANGUAGES.md) - Detailed breakdown of languages and technologies used
-- [Architecture](docs/ARCHITECTURE.md) - Detailed architecture documentation
+- [Architecture](docs/ARCHITECTURE.md) - Architecture documentation
 - [Data Flow](docs/DATA_FLOW.md) - Lineage diagrams
 - [FAQ](docs/FAQ.md) - Frequently asked questions
 - [Troubleshooting](docs/TROUBLESHOOTING.md) - Common issues and solutions
 - [Contributing](CONTRIBUTING.md) - Contribution guidelines
 
-### 🏆 Features
+### What’s Included
 
-- **Production-Ready**: Battle-tested patterns and best practices
-- **Well-Documented**: Comprehensive docs and inline comments
-- **Tested**: 100% test coverage on all models
-- **CI/CD**: Automated validation on every push
-- **Educational**: Learn modern analytics engineering
+- **Documented**: Schema docs and inline comments for all models
+- **Tested**: Data quality tests on every model
+- **Layered**: Proper staging → intermediate → marts architecture
+- **Educational**: Good reference for learning dbt patterns
 
 ---
 
 **Author:** Gabriel Demetrios Lafis  
 **License:** MIT  
-**Last Updated:** October 2025
+**Last Updated:** February 2026

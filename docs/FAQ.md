@@ -35,7 +35,7 @@ This project contains:
 
 ### How many tests are there?
 
-- 82+ data quality tests across all models
+- 82 data quality tests across all models
 - Mix of schema tests and custom SQL tests
 
 ### What's the difference between staging, intermediate, and marts?
@@ -153,10 +153,9 @@ sources:
 3. Test locally: `dbt run` and `dbt test`
 4. Commit changes
 5. Open pull request
-6. CI runs automated checks
-7. Code review
-8. Merge to main
-9. Deploy to production
+6. Code review
+7. Merge to main
+8. Deploy to production
 
 ### How do I run only changed models?
 
@@ -276,10 +275,9 @@ Benefits:
 ### How do I deploy to production?
 
 1. Merge to main branch
-2. CI/CD runs tests
-3. Deploy using orchestrator (Airflow, dbt Cloud)
-4. Run in production environment
-5. Monitor for failures
+2. Deploy using orchestrator (Airflow, dbt Cloud)
+3. Run in production environment
+4. Monitor for failures
 
 ### What's the difference between dev and prod?
 

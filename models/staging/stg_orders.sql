@@ -66,7 +66,7 @@ cleaned as (
         -- Calculated Fields
         sales_amount * (1 - discount_rate) as net_sales,
         profit_amount / nullif(sales_amount, 0) as profit_margin,
-        datediff(day, order_date, ship_date) as days_to_ship
+        (ship_date - order_date) as days_to_ship
         
     from renamed
 )

@@ -96,7 +96,7 @@ This project implements a modern data warehouse using dbt (data build tool) foll
 │ Marts - Metrics     │ 2         │ 7+ schema tests        │
 │ Custom Tests        │ -         │ 3 SQL tests            │
 ├─────────────────────┼───────────┼────────────────────────┤
-│ TOTAL               │ 10        │ 82+ tests              │
+│ TOTAL               │ 10        │ 82 tests               │
 └─────────────────────┴───────────┴────────────────────────┘
 ```
 
@@ -146,30 +146,12 @@ Marts (Tables/Incremental)
 - Maintains historical data
 - Uses `unique_key` for upsert logic
 
-## CI/CD Pipeline
-
-### GitHub Actions Workflow
-
-```yaml
-Trigger: Push/PR to main/develop
-├── Job 1: Compile and Test
-│   ├── Install dbt
-│   ├── Compile models
-│   ├── Parse project
-│   ├── Generate docs
-│   └── Validate structure
-├── Job 2: Lint YAML
-│   └── Check YAML formatting
-└── Job 3: Lint SQL
-    └── Check SQL style
-```
-
 ## Deployment Strategy
 
 ### Development Workflow
 
 ```
-1. Feature Branch → 2. Local Dev → 3. PR → 4. CI Checks → 5. Merge → 6. Production
+1. Feature Branch → 2. Local Dev → 3. PR → 4. Merge → 5. Deploy to Production
 ```
 
 ### Environment Separation
@@ -180,14 +162,13 @@ Trigger: Push/PR to main/develop
 
 ## Best Practices Implemented
 
-✅ Layered architecture (separation of concerns)  
-✅ Comprehensive testing (data quality)  
-✅ Living documentation (schema.yml files)  
-✅ Version control (Git)  
-✅ CI/CD automation (GitHub Actions)  
-✅ Incremental models (performance)  
-✅ DRY principle (macros)  
-✅ Naming conventions (consistency)
+- Layered architecture (separation of concerns)
+- Testing across all layers (data quality)
+- Living documentation (schema.yml files)
+- Version control (Git)
+- Incremental models (performance)
+- DRY principle (macros)
+- Naming conventions (consistency)
 
 ## Monitoring and Observability
 
